@@ -8,6 +8,14 @@ function getCurr(){
     return parseInt(curr.textContent); 
 }
 
+function handleClick(){
+
+}
+
+function handleKeyDown(){
+    
+}
+
 function add(){
 
 }
