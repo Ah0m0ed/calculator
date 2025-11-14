@@ -1,0 +1,28 @@
+*{
+    --primary-- : rgb(49 54 71);
+    --secondary-- : rgb(67 86 99);
+    --fontColor-- : rgb(255 248 212);
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(163 176 135);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--fontColor--);
+}
+
+.container{
+    background-color: var(--primary--);
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 15px 15px 30px 30px;
+}
+
+.calculator{
+    background-color: var(--secondary--);
+    margin-top: 2rem;
+    padding: 0.5rem;
+}
