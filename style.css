@@ -23,11 +23,15 @@ body{
     margin-top: 3rem;
     padding: 1rem;
     border-radius: 15px 15px 30px 30px;
+    min-width: 30vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .title{
     margin-top: 1rem;
-    margin-bottom: 0.5rem;
     font-size: 28px;
     font-weight: bold;
     margin-left: 1rem;
@@ -35,12 +39,13 @@ body{
 
 .calculator{
     background-color: var(--secondary--);
-    padding: 0.5rem;
+    padding: 1.5rem;
     display: grid;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
     border-radius: 10px;
+    flex: 1;
 }
 
 .display{
@@ -49,14 +54,14 @@ body{
     color: var(--primary--);
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 8px;
     border-radius: 5px;
 }
 
 .prev-op{
-    font-size: 6px;
-    color: white;
+    font-size: 16px;
+    color: rgba(65 71 49 /.7);
 }
 
 .curr-op{
@@ -67,9 +72,25 @@ body{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(5,1fr);
-    gap: 0.5rem;
+    gap: 1rem;
+    flex: 1;
 }
 
 #equal{
     grid-column: 2 / 5;
+}
+
+button{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--fontColor--);
+    background-color: var(--primary--);
+    border: 0px;
+    border-radius: 5px;
+}
+
+button:hover{
+    color: var(--primary--);
+    background-color: var(--fontColor--);
+    box-shadow: 5px 5px 5px 5px;
 }
