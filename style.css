@@ -66,6 +66,7 @@ body{
 
 .curr-op{
     font-size: 20px;
+    color: var(--primary--);
 }
 
 .buttons{
