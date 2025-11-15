@@ -10,12 +10,20 @@ function getCurr(){
 
 function setPrev(string){
     let prev = document.querySelector(".prev-op");
-    prev.textContent += `${string}`;
+    if(prev.textContent == "0"){
+        prev.textContent = `${string}`;
+    }else{
+        prev.textContent += `${string}`;
+    }
 }
 
 function setCurr(string){
     let curr = document.querySelector(".curr-op");
-    curr.textContent += `${string}`;
+    if(curr.textContent == "0"){
+        curr.textContent = `${string}`;
+    }else{
+        curr.textContent += `${string}`;
+    }
 }
 
 function handleClick(e){
@@ -29,6 +37,14 @@ function handleClick(e){
             return multiply();
         case "devide":
             return devide();
+        case "reset":
+            return reset();
+        case "del":
+            return del();
+        case "equal":
+            return calc();
+        case "decimal":
+            return decimal();
     }
 }
 
@@ -49,5 +65,21 @@ function multiply(){
 }
 
 function devide(){
+
+}
+
+function calc(){
+
+}
+
+function reset(){
+
+}
+
+function del(){
+
+}
+
+function decimal(){
 
 }
