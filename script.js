@@ -1,42 +1,84 @@
-function getPrev(){
-    let prev = document.querySelector(".prev-op");
-    return parseInt(prev.textContent); 
+let prev = document.querySelector(".prev-op");
+let curr = document.querySelector(".curr-op");
+let calculator = document.querySelector(".buttons");
+calculator.addEventListener("click", handleClick);
+
+function getPrev() {
+    return prev.textContent;
 }
 
-function getCurr(){
-    let curr = document.querySelector(".curr-op");
-    return parseInt(curr.textContent); 
+function getCurr() {
+    return curr.textContent;
 }
 
-function setPrev(string){
-    let prev = document.querySelector(".prev-op");
-    if(prev.textContent == "0"){
+function resetCurr() {
+    curr.textContent = "0";
+}
+
+function resetPrev() {
+    prev.textContent = "0";
+}
+
+function setPrev(string) {
+    if (prev.textContent == "0") {
         prev.textContent = `${string}`;
-    }else{
+    } else {
         prev.textContent += `${string}`;
     }
 }
 
-function setCurr(string){
-    let curr = document.querySelector(".curr-op");
-    if(curr.textContent == "0"){
+function setCurr(string) {
+    if (curr.textContent == "0") {
         curr.textContent = `${string}`;
-    }else{
+    } else {
         curr.textContent += `${string}`;
     }
 }
 
-function handleClick(e){
+function handleClick(e) {
     let id = e.target.id;
-    switch(id){
+    const operators = ["+", "-", "X", "/"];
+    switch (id) {
         case "add":
+            if (!operators.includes(getLast()) && getPrev() != "0" && getCurr() != "0") {
+                alert("Enter an operator !!");
+                resetCurr();
+                return;
+            }
+            if (getPrev() != "0") {
+                calc();
+            }
             return add();
         case "subtract":
+            if (!operators.includes(getLast()) && getPrev() != "0" && getCurr() != "0") {
+                alert("Enter an operator !!");
+                resetCurr();
+                return;
+            }
+            if (getPrev() != "0") {
+                calc();
+            }
             return subtract();
         case "multiply":
+            if (!operators.includes(getLast()) && getPrev() != "0" && getCurr() != "0") {
+                alert("Enter an operator !!");
+                resetCurr();
+                return;
+            }
+            if (getPrev() != "0") {
+                calc();
+            }
             return multiply();
-        case "devide":
-            return devide();
+        case "divide":
+            if (!operators.includes(getLast()) && getPrev() != "0" && getCurr() != "0") {
+                alert("Enter an operator !!");
+                resetCurr();
+                return;
+            }
+            if (getPrev() != "0") {
+                calc();
+            }
+            return divide();
         case "reset":
             return reset();
         case "del":
@@ -45,41 +87,111 @@ function handleClick(e){
             return calc();
         case "decimal":
             return decimal();
+        default:
+            if (e.target.type == "button") {
+                return setCurr(e.target.textContent.trim());
+            }
     }
 }
 
-function handleKeyDown(){
+// function handleKeyDown() {
 
+// }
+
+function getLast() {
+    let last = getPrev();
+    return last.charAt(last.length - 1);
 }
 
-function add(){
-
+function add() {
+    if (getCurr() == "0") {
+        setPrev(" +");
+    } else {
+        setPrev(getCurr() + " +");
+    }
+    resetCurr();
 }
 
-function subtract(){
-
+function subtract() {
+    if (getCurr() == "0") {
+        setPrev(" -");
+    } else {
+        setPrev(getCurr() + " -");
+    }
+    resetCurr();
 }
 
-function multiply(){
-
+function multiply() {
+    if (getCurr() == "0") {
+        setPrev(" X");
+    } else {
+        setPrev(getCurr() + " X");
+    }
+    resetCurr();
 }
 
-function devide(){
-
+function divide() {
+    if (getCurr() == "0") {
+        setPrev(" /");
+    } else {
+        setPrev(getCurr() + " /");
+    }
+    resetCurr();
 }
 
-function calc(){
-
+function calc() {
+    let operator = getLast();
+    let firstNum = getPrev().slice(0, getPrev().length - 2);
+    firstNum = parseFloat(firstNum);
+    let secondNum = parseFloat(getCurr());
+    let result = null ;
+    switch (operator) {
+        case "+":
+            result = firstNum + secondNum;
+            break;
+        case "-":
+            result = firstNum - secondNum;
+            break;
+        case "X":
+            result = firstNum * secondNum
+            break;
+        case "/":
+            if (secondNum == 0) {
+                alert("Cant divide by zero !");
+                reset();
+                return;
+            }
+            result = firstNum / secondNum;
+            break;
+        default:
+            return;
+    }
+    result = Math.round(result * 100000000) / 100000000;
+    reset();
+    setPrev(result.toString());
 }
 
-function reset(){
-
+function reset() {
+    resetCurr();
+    resetPrev();
 }
 
-function del(){
-
+function del() {
+    let curr = getCurr();
+    if (curr.length == 1) {
+        resetCurr();
+    } else {
+        setCurr(curr.slice(0,-1));
+    }
 }
 
-function decimal(){
-
+function decimal() {
+    let curr = getCurr();
+    if (!curr.includes(".")) {
+        if (curr == "0") {
+            setCurr("0.");
+        } else {
+            setCurr(".");
+        }
+    }
 }
