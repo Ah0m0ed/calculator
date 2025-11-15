@@ -8,6 +8,16 @@ function getCurr(){
     return parseInt(curr.textContent); 
 }
 
+function setPrev(string){
+    let prev = document.querySelector(".prev-op");
+    prev.textContent += `${string}`;
+}
+
+function setCurr(string){
+    let curr = document.querySelector(".curr-op");
+    curr.textContent += `${string}`;
+}
+
 function handleClick(e){
     let id = e.target.id;
     switch(id){
