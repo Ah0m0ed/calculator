@@ -2,6 +2,7 @@ let prev = document.querySelector(".prev-op");
 let curr = document.querySelector(".curr-op");
 let calculator = document.querySelector(".buttons");
 calculator.addEventListener("click", handleClick);
+document.addEventListener("keydown", handleKeyDown);
 
 function getPrev() {
     return prev.textContent;
@@ -94,9 +95,27 @@ function handleClick(e) {
     }
 }
 
-// function handleKeyDown() {
-
-// }
+function handleKeyDown(e) {
+    let key = e.key;
+    let keyMap = {
+        "0": "0", "1": "1", "2": "2", "3": "3", "4": "4",
+        "5": "5", "6": "6", "7": "7", "8": "8", "9": "9",
+        "+": "add", "-": "subtract", "*": "multiply", "/": "divide",
+        "Enter": "equal", "Backspace": "del", " ": "reset", ".": "decimal",
+    }
+    let operations = ["add", "subtract", "multiply", "divide",
+        "equal", "del", "reset", "decimal"];
+    
+    if(keyMap[key]){
+        e.preventDefault();
+        let id = keyMap[key];
+        if(operations.includes(id)){
+            document.getElementById(id)?.click();
+        }else{
+            setCurr(keyMap[key]);
+        }
+    }
+}
 
 function getLast() {
     let last = getPrev();
@@ -144,7 +163,7 @@ function calc() {
     let firstNum = getPrev().slice(0, getPrev().length - 2);
     firstNum = parseFloat(firstNum);
     let secondNum = parseFloat(getCurr());
-    let result = null ;
+    let result = null;
     switch (operator) {
         case "+":
             result = firstNum + secondNum;
@@ -181,7 +200,8 @@ function del() {
     if (curr.length == 1) {
         resetCurr();
     } else {
-        setCurr(curr.slice(0,-1));
+        resetCurr();
+        setCurr(curr.slice(0, -1));
     }
 }
 
