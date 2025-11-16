@@ -1,5 +1,5 @@
 ## 🧮 TOP Calculator App
-[!DesignPreview](./designPrev.png)
+![DesignPreview](./designPrev.png)
 # 📝 Project Overview
 
 This is a fully functional, browser-based Basic Calculator application, completed as a core project within The Odin Project's Foundations curriculum.
