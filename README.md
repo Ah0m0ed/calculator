@@ -1,5 +1,5 @@
 ## 🧮 TOP Calculator App
-
+[!DesignPreview](./designPrev.png)
 # 📝 Project Overview
 
 This is a fully functional, browser-based Basic Calculator application, completed as a core project within The Odin Project's Foundations curriculum.
@@ -11,6 +11,10 @@ The primary objective was to implement complex calculation logic from scratch us
 2. Managing the state of the calculator display and memory.
 
 3. Ensuring a clean, responsive UI with full keyboard support.
+
+# 🚀 Live Demo
+
+**View Live Project:**https://ah0m0ed.github.io/calculator/
 
 # ✨ Key Features Implemented
 
