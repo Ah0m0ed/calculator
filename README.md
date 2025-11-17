@@ -14,7 +14,7 @@ The primary objective was to implement complex calculation logic from scratch us
 
 # 🚀 Live Demo
 
-View Live Project: https://ah0m0ed.github.io/calculator/
+View Live Project: https://ah0m0ed.github.io/TOP_calculator/
 
 # ✨ Key Features Implemented
 
